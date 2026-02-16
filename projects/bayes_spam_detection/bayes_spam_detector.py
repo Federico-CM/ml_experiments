@@ -60,6 +60,6 @@ def is_spam(msg):
 while True:
     t = input("> ")
     p, margin = is_spam(t)
-    print(("spam" if p else "ham"), "margin:", round(margin, 3))
+    print(("spam" if p else "not spam"), "margin:", round(margin, 3))
 
  
