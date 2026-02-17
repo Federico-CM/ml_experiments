@@ -1,13 +1,13 @@
-# Tiny Shakespeare – 20-Line Markov Model
+# Tiny Shakespeare - Markov Model (Python and R)
+A pair of lightweight text generators that produce Shakespeare-style language using third-order Markov chains.
 
-A minimal character-level Markov chain text generator built in just **20 lines of Python**.
-This project demonstrates how probabilistic language modeling can be implemented concisely.
+Both implementations follow the same probabilistic model, with differences only in syntax and language-specific structure (Python vs. R). The project demonstrates how concise code can be used to build effective probabilistic language models.
 
 ## Project Overview
 
 This project is an example of:
 - Markov processes
 - State transitions and conditional probability
-- Text preprocessing and "tokenization" 
-- Data modeling with Python
+- Text preprocessing and tokenization 
+- Data modeling in Python and R
 - Algorithmic thinking in compact, readable code
