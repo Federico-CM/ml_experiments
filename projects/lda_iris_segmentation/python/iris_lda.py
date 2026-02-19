@@ -1,4 +1,4 @@
- # lda_iris.py
+# lda_iris.py
 from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
