@@ -1,26 +1,28 @@
 # Breast Cancer Wisconsin Dataset – Logistic Regression (Python and R)
 
 ## What is this?
-This project contains two implementations (Python and R) that perform Logistic Regression using the fameous Wisconsin Breast Cancer Dataset (Diagnostic).
+This project contains two implementations (Python and R) that perform Logistic Regression using the fameous Wisconsin Breast Cancer Dataset (Diagnostic version).
 
 The goal is simple:
 Given measurements computed from a breast mass (such as radius, texture, smoothness, etc.), can we correctly predict whether the tumor is malignant (cancerous) or benign (non-cancerous)?
 
 ## Why is this interesting?
-This project shows how a computer can learn to sort things into categories based on measurable traits.
-In everyday terms, this is the same kind of task used in:
-- Credit approval systems
-- Medical diagnosis support
-- Customer segmentation
-- Face recognition
+This project demonstrates how a computer can assist in medical decision-making by learning patterns from real diagnostic data.
+This type of analisis is also used for problems that require to identify data in two categories or that have True/False answers.
+
+Examples:
+- Customer churn prediction
+- Fraud detection
+- Spam filtering
+- Loan default prediction
 
 ## What does this project show?
 This project is an example of:
-- How computers can sort data into categories
-- How numerical measurements can be used to make predictions
-- How to train and evaluate a classification model
+- Binary classification using Logistic Regression
+- How to estimate probabilities for medical outcomes
+- How to train and test a predictive model
+- How to evaluate classification performance
 - Implementing the same analysis in both Python and R
-
 
 # Technical Stuff
 
@@ -30,7 +32,11 @@ If you execute the python script you need the sklearn library before executing t
 To get that library type: 
 pip3 install sklearn
 
-## How do I interpreet the results?
+If you execute the R script you need the caret and glmnet libraries before executing the script.
+To get those libraries, type:
+install.packages(c("caret","glmnet"))
+
+## How do I interpret the results?
 The models present a lot of valuable diagnostics.
 Among them, two pieces of information are easily interpretable:
 
@@ -38,14 +44,11 @@ Among them, two pieces of information are easily interpretable:
 It should look something like this:
 
                  Predicted
-               Setosa  Versicolor  Virginica
+               Malignant   Benign
 Actual
-Setosa            11        0           0
-Versicolor         0       12           1
-Virginica          0        0          14
+Malignant           53         1
+Benign               0        89
 
-2) The plot
-The models produce a scatterplot-like plot where colors denote different groups.
-A good model shows clearly separated clusters for each class with minimal overlap.
+In medical contexts, minimizing false negatives (predicting benign when it is malignant) is especially important.
 
 

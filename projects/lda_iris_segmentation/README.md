@@ -28,7 +28,7 @@ If you execute the python script you need the sklearn library before executing t
 To get that library type: 
 pip3 install sklearn
 
-## How do I interpreet the results?
+## How do I interpret the results?
 The models present a lot of valuable diagnostics.
 Among them, two pieces of information are easily interpretable:
 
