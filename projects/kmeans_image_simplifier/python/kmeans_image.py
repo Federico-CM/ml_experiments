@@ -24,10 +24,41 @@ IMAGE_PATH = BASE_DIR / "momiji.jpg"
 # ======================
 # I/O + Validation + Display
 # ======================
-def validate_rgb_image(img: np.ndarray) -> None:
-    """Raise a ValueError if the image is not a 3-channel RGB image."""
+def validate_data(
+    img: np.ndarray,
+    k: int,
+    max_iter: int,
+    threshold: float
+) -> None:
+    """
+    Validate image and hyperparameters.
+
+    Raises ValueError if any condition is invalid.
+    """
+
+    # Image validation
     if img.ndim != 3 or img.shape[2] != 3:
-        raise ValueError("This script uses only color RGB images with no transparency.")
+        raise ValueError(
+            "This script supports only RGB images, no transparency."
+        )
+
+    h, w = img.shape[:2]
+    n_pixels = h * w
+
+    # Hyperparameter validation
+    if not isinstance(k, int) or k <= 0:
+        raise ValueError("K must be a positive integer.")
+
+    if k > n_pixels:
+        raise ValueError(
+            f"K ({k}) cannot exceed number of pixels ({n_pixels})."
+        )
+
+    if not isinstance(max_iter, int) or max_iter <= 0:
+        raise ValueError("MAX_ITER must be a positive integer.")
+
+    if not isinstance(threshold, (int, float)) or threshold < 0:
+        raise ValueError("THRESHOLD must be a non-zero, non-negative number.")
 
 
 def show_image(img: np.ndarray, title: str | None = None) -> None:
@@ -104,7 +135,7 @@ def main(k, max_iter, threshold, seed, image_path):
     """Execute the full K-means image simplification pipeline."""
     # Read and validate the image
     img = io.imread(image_path)
-    validate_rgb_image(img)
+    validate_data(img, k, max_iter, threshold)
     img_f = img.astype(np.float32)
 
     # Plot the input image
