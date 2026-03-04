@@ -14,8 +14,8 @@ from skimage import io
 # ======================
 K = 20
 MAX_ITER = 15
-THRESHOLD = 25
-SEED = 42
+THRESHOLD = 25 # this is squared distance
+SEED = 1
 
 # Directory where THIS script file lives
 BASE_DIR = Path(__file__).resolve().parent
@@ -58,7 +58,7 @@ def validate_data(
         raise ValueError("MAX_ITER must be a positive integer.")
 
     if not isinstance(threshold, (int, float)) or threshold < 0:
-        raise ValueError("THRESHOLD must be a non-zero, non-negative number.")
+        raise ValueError("THRESHOLD must be a float >= 0.")
 
 
 def show_image(img: np.ndarray, title: str | None = None) -> None:
@@ -82,12 +82,11 @@ def init_centroids(img_f: np.ndarray, k: int):
     return centroids
 
 
-def compute_distances(img_f: np.ndarray, centroids: np.ndarray, k) -> np.ndarray:
+def compute_distances(img_f: np.ndarray, centroids: np.ndarray) -> np.ndarray:
     """Compute squared Euclidean distances from each pixel to each centroid."""
-    y, x = img_f.shape[:2]
-    distances = np.zeros((y, x, k), dtype=np.float32)
-    for i in range(k):
-        distances[:, :, i] = ((img_f - centroids[i]) ** 2).sum(axis=2)
+    diff = img_f[:, :, None, :] - centroids[None, None, :, :]
+    distances = (diff * diff).sum(axis=3, dtype=np.float32)
+
     return distances
 
 
@@ -147,7 +146,7 @@ def main(k, max_iter, threshold, seed, image_path):
 
     # Run the main loop
     for iteration in range(0, max_iter):
-        distances = compute_distances(img_f, centroids, k)
+        distances = compute_distances(img_f, centroids)
         labels = assign_labels(distances)
         new_centroids = recompute_centroids(img_f, labels, k)
         converged = check_convergence(new_centroids, centroids, threshold, iteration)
@@ -162,4 +161,5 @@ def main(k, max_iter, threshold, seed, image_path):
     show_image(new_img, title="Output")
 
 
-main(K, MAX_ITER, THRESHOLD, SEED, IMAGE_PATH)
+if __name__ == "__main__":
+    main(K, MAX_ITER, THRESHOLD, SEED, IMAGE_PATH)

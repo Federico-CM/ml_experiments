@@ -1,7 +1,7 @@
 # Image Segmentation – K-Means Clustering (python)
 
 ## What is this?
-This project contains an implementations (Python) that performs image segmentation using K-Means clustering.
+This project contains a script (Python) that implements K-means clustering from scratch and performs image segmentation.
 The goal is simple: Given an image, can we group pixels into K groups based on how similar they are by color, and produce a segmented version of the image?
 
 ## Why is this interesting?
@@ -16,6 +16,7 @@ In everyday terms, this is the same kind of task used in:
 
 ## What does this project show?
 This project is an example of:
+- How a commonly used algorithm works under the hood
 - How computers can group similar data points into clusters
 - How an image can be treated like a dataset (each pixel is a data row)
 - How unsupervised learning works (no labeled “correct answer” needed)

@@ -1,3 +1,18 @@
+"""
+Manual K-means clustering visualization.
+
+This script generates synthetic 2D customer data (income vs. spending score)
+It then implements the K-means algorithm from scratch (without using scikit-learn), 
+iteratively assigning points to the nearest centroid and updating centroid positions.
+
+At each iteration, the script saves a plotted image showing:
+- Data points colored by cluster assignment
+- Current centroid positions
+
+The output images are written to the specified directory, allowing you
+to visually track how the clusters evolve and converge over time.
+"""
+
 import os
 import numpy as np
 import matplotlib.pyplot as plt
