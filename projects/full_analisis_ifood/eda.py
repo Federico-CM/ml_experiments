@@ -8,7 +8,7 @@ Make sure that the script is in the same location as ml_project1_data.csv
 from pathlib import Path
 import pandas as pd
 import matplotlib.pyplot as plt
-
+from pyampute.exploration.mcar_statistical_tests import MCARTest
 from scipy.stats import ttest_ind
 
 # -------------------
@@ -69,23 +69,19 @@ print("\nMissing values (%):")
 print((df.isna().mean() * 100).sort_values(ascending=False))
 
 test_cols = [
+    "Income",
     "Year_Birth",
     "Recency",
     "TotalSpend",
-    "TotalPurchases",
+    "TotalPurchases"
 ]
 
-results = (
-    df[test_cols]
-    .apply(lambda col: ttest_ind(
-        col[df["Income_missing"] == 0],
-        col[df["Income_missing"] == 1],
-        nan_policy="omit"
-    )[1])
-)
-print("\nt-test association of NA values:")
-print(results)
+mcar_test = MCARTest(method="little")
 
+p_value = mcar_test.little_mcar_test(df[test_cols])
+
+print("Little's MCAR test p-value:")
+print(p_value)
 
 # -------------------
 # 2- Constant columns
@@ -116,9 +112,6 @@ print(detect_outliers(df["Income"].dropna()).sort_values(ascending=False).head()
 # -------------------
 # 4- Categorical inspection
 # -------------------
-print("\nEducation categories:")
-print(df["Education"].value_counts())
-
 print("\nMarital_Status categories:")
 print(df["Marital_Status"].value_counts())
 
