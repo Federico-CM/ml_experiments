@@ -45,19 +45,6 @@ This project is an example of:
 - How logistic regression can be used for binary classification
 - How model results can be interpreted and evaluated
 
-# Project Structure
-
-```
-.
-├── eda.py
-├── eda_report.md
-├── process_data.py
-├── logreg.py
-├── logreg_report.md
-└── data/
-    └── ifood.csv
-```
-
 ## Exploratory Data Analysis
 
 The script `eda.py` performs a series of analyses and validation checks on the dataset.
@@ -67,7 +54,6 @@ These include:
 - Missing value detection
 - Distribution analysis
 - Outlier identification
-- Correlation analysis
 - Feature visualization
 - Consistency checks
 

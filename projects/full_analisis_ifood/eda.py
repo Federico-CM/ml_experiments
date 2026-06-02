@@ -33,6 +33,8 @@ print(df.select_dtypes(include='number').agg(['min', 'max']).T)
 # Data engineering
 # -------------------
 
+# I explore if data some features might be useful
+
 # Total Spend
 sales_cols = [
     "MntWines",

@@ -1,6 +1,8 @@
 # EDA Report
 
 ## Summary
+The explored dataset (ifood dataset) has data regarding the response to a marketing campaign by different customers.
+
 **Minor issues were identified in the dataset; however, they do not impede further analysis.**
 
 These issues can be addressed through standard preprocessing methods such as data imputation or removal of rows containing data entry errors.
@@ -8,9 +10,9 @@ These issues can be addressed through standard preprocessing methods such as dat
 ## Important Findings
 
 ### 1. Missing Values in Income
-**There are 24 missing values in `Income`** out of 2240 observations (~1.07%)`.
+**There are 24 missing values in `Income`** out of 2240 observations (~1.07%).
 
-Statistical tests (Little's MCAR test) do not provide evidence against data being Missing Completely At Random (MCAR) *(EDA script, section 1)*.
+An MCAR test was performed. No statistical evidence that the missingness mechanism departs from Missing Completely At Random (MCAR) was found. *(EDA script, section 1)*.
 
 Given the small proportion of missing values and the typically skewed distribution of income, median imputation is a reasonable and robust approach.
 
@@ -49,13 +51,19 @@ These entries likely represent invalid categories and should either be:
 ---
 
 ### 5. Class Imbalance in Response
-**The `Response` variable is highly imbalanced**, with 334 positives out of 2240 records *(EDA script, section 5)*.
+**The `Response` variable is imbalanced**, with 334 positives out of 2240 records *(EDA script, section 5)*.
 
 When splitting the dataset into training and test sets, stratified sampling should be used to preserve class proportions.
 
 ---
 
 ### 6. Associations with Response Variable
-The exploratory analysis suggests that **several variables exhibit meaningful associations with the `Response` variable** *(EDA script sections 6–9)*.
+The exploratory analysis suggests that **several variables exhibit associations with the `Response` variable** *(EDA script sections 6–9)*. This also includes engineered variables.
 
-This supports the use of predictive modeling approaches that incorporate multiple features, potentially including dimensionality reduction techniques. 
+
+## Conclusion
+The data is suitable for further analysis, provided care is taken to clean and process the data. 
+
+Visualizations suggest potential associations with the response variable that warrant further investigation through statistical modeling.
+
+Logistic regression is recommended as a baseline model as the response variable is binary. More flexible methods (e.g. tree-based models) may also be explored.
