@@ -29,8 +29,9 @@ def load_and_clean_data(csv_path: str | Path) -> pd.DataFrame:
     if "Dt_Customer" in df.columns:
         df["Dt_Customer"] = pd.to_datetime(df["Dt_Customer"], errors="coerce")
 
-    # Log-transform income
+    # Log-transform income and drop original Income column
     if "Income" in df.columns:
         df["Income_log"] = np.log1p(df["Income"])
+        df = df.drop(columns=["Income"])
 
     return df

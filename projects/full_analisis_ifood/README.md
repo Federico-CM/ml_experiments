@@ -61,7 +61,7 @@ The generated visualizations help identify potential problems in the data and pr
 
 All findings are summarized in:
 
-`eda_report.md`
+`eda_report.pdf`
 
 ## Data Processing
 
