@@ -1,5 +1,3 @@
-# Image Segmentation – K-Means Clustering (python)
-
 ![K-Means Image Segmentation Diagram](https://raw.githubusercontent.com/Federico-CM/ml_experiments/main/projects/kmeans_from_scratch_image_simplifier/k_means_info.png)
 
 

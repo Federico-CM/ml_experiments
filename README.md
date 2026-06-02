@@ -22,14 +22,14 @@ A portfolio of self-contained machine learning experiments covering supervised l
 
 | Project | Area | Techniques | Stack |
 |---|---|---|---|
-| `bayes_spam_detection` | Supervised learning | Naïve Bayes, probabilistic classification, text preprocessing | Python |
-| `chatbot_implementation_chatGPTAPI` | LLM / API integration | OpenAI API, prompt engineering, conversation state management | Python |
-| `full_analisis_ifood` | End-to-end analysis | EDA, feature engineering, logistic regression, random forest | Python |
-| `kmeans_from_scratch_image_simplifier` | Unsupervised learning | K-means (from scratch), color quantization, pixel clustering | Python |
-| `kmeans_customer_segmentation` | Unsupervised learning | K-means, customer profiling, elbow method, cluster interpretation | Python |
-| `lda_iris_segmentation` | Dimensionality reduction | Linear Discriminant Analysis, class separability, feature projection | Python & R |
-| `log_reg_cancer_detection` | Supervised learning | Logistic regression, binary classification, medical data, model evaluation | Python |
-| `markov_chain_shakespeare` | NLP / text generation | Markov chains, n-gram modeling, probabilistic sampling | Python & R |
+| [`bayes_spam_detection`](https://github.com/Federico-CM/ml_experiments/tree/main/projects/bayes_spam_detection) | Supervised learning | Naïve Bayes, probabilistic classification, text preprocessing | Python |
+| [`chatbot_implementation_chatGPTAPI`](https://github.com/Federico-CM/ml_experiments/tree/main/projects/chatbot_implementation_chatGPTAPI) | LLM / API integration | OpenAI API, prompt engineering, conversation state management | Python |
+| [`full_analisis_ifood`](https://github.com/Federico-CM/ml_experiments/tree/main/projects/full_analisis_ifood) | End-to-end analysis | EDA, feature engineering, logistic regression, random forest | Python |
+| [`kmeans_from_scratch_image_simplifier`](https://github.com/Federico-CM/ml_experiments/tree/main/projects/kmeans_from_scratch_image_simplifier) | Unsupervised learning | K-means (from scratch), color quantization, pixel clustering | Python |
+| [`kmeans_customer_segmentation`](https://github.com/Federico-CM/ml_experiments/tree/main/projects/kmeans_customer_segmentation) | Unsupervised learning | K-means, customer profiling, elbow method, cluster interpretation | Python |
+| [`lda_iris_segmentation`](https://github.com/Federico-CM/ml_experiments/tree/main/projects/lda_iris_segmentation) | Dimensionality reduction | Linear Discriminant Analysis, class separability, feature projection | Python & R |
+| [`log_reg_cancer_detection`](https://github.com/Federico-CM/ml_experiments/tree/main/projects/log_reg_cancer_detection) | Supervised learning | Logistic regression, binary classification, medical data, model evaluation | Python |
+| [`markov_chain_shakespeare`](https://github.com/Federico-CM/ml_experiments/tree/main/projects/markov_chain_shakespeare) | NLP / text generation | Markov chains, n-gram modeling, probabilistic sampling | Python & R |
 
 ---
 
