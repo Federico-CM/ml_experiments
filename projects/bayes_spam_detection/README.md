@@ -32,7 +32,6 @@ This project is an example of:
 - How probabilities can be used for classification
 - How text messages can be converted into numerical information
 - How word frequencies influence predictions
-- How Laplace smoothing handles previously unseen words
 - How a classic machine learning algorithm works under the hood
 
 ---
