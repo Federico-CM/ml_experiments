@@ -9,7 +9,7 @@ from pathlib import Path
 import pandas as pd
 import matplotlib.pyplot as plt
 from pyampute.exploration.mcar_statistical_tests import MCARTest
-from scipy.stats import ttest_ind
+#from scipy.stats import ttest_ind
 
 # -------------------
 # Load  the data

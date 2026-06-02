@@ -1,5 +1,8 @@
 # Image Segmentation – K-Means Clustering (python)
 
+![K-Means Image Segmentation Diagram](https://raw.githubusercontent.com/Federico-CM/ml_experiments/main/projects/kmeans_from_scratch_image_simplifier/k_means_info.png)
+
+
 ## What is this?
 This project contains a script (Python) that implements K-means clustering from scratch and performs image segmentation.
 The goal is simple: Given an image, can we group pixels into K groups based on how similar they are by color, and produce a segmented version of the image?

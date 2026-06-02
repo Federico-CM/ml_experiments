@@ -12,14 +12,15 @@ from skimage import io
 # ======================
 # Constants
 # ======================
-K = 20
+K = 12
 MAX_ITER = 15
-THRESHOLD = 25 # this is squared distance
-SEED = 1
+THRESHOLD = 25  # this is squared distance
+SEED = 0
 
 # Directory where THIS script file lives
 BASE_DIR = Path(__file__).resolve().parent
-IMAGE_PATH = BASE_DIR / "momiji.jpg"
+IMAGE_PATH = BASE_DIR / "wakayama.jpg"
+OUTPUT_PATH = BASE_DIR / "output.png"
 
 # ======================
 # I/O + Validation + Display
@@ -36,7 +37,6 @@ def validate_data(
     Raises ValueError if any condition is invalid.
     """
 
-    # Image validation
     if img.ndim != 3 or img.shape[2] != 3:
         raise ValueError(
             "This script supports only RGB images, no transparency."
@@ -45,7 +45,6 @@ def validate_data(
     h, w = img.shape[:2]
     n_pixels = h * w
 
-    # Hyperparameter validation
     if not isinstance(k, int) or k <= 0:
         raise ValueError("K must be a positive integer.")
 
@@ -70,6 +69,12 @@ def show_image(img: np.ndarray, title: str | None = None) -> None:
     plt.show()
 
 
+def save_image(img: np.ndarray, output_path: Path) -> None:
+    """Save an image to disk."""
+    io.imsave(output_path, img, check_contrast=False)
+    print(f"Saved simplified image to: {output_path}")
+
+
 # ======================
 # K-means helpers
 # ======================
@@ -86,7 +91,6 @@ def compute_distances(img_f: np.ndarray, centroids: np.ndarray) -> np.ndarray:
     """Compute squared Euclidean distances from each pixel to each centroid."""
     diff = img_f[:, :, None, :] - centroids[None, None, :, :]
     distances = (diff * diff).sum(axis=3, dtype=np.float32)
-
     return distances
 
 
@@ -99,12 +103,15 @@ def assign_labels(distances: np.ndarray) -> np.ndarray:
 def recompute_centroids(img_f, labels, k):
     """Recalculate centroids for k clusters."""
     new_centroids = np.zeros((k, 3), dtype=np.float32)
+
     for i in range(k):
         mask = labels == i
-        if not np.any(mask):  # if cluster is empty then re-seed
+
+        if not np.any(mask):
             new_centroids[i] = init_centroids(img_f, 1)[0]
         else:
             new_centroids[i] = img_f[mask].mean(axis=0)
+
     return new_centroids
 
 
@@ -125,41 +132,49 @@ def apply_centroids(img, labels, centroids, k):
     centroids = centroids.round().clip(0, 255).astype(img.dtype)
 
     new_img = img.copy()
+
     for i in range(k):
         new_img[labels == i] = centroids[i]
+
     return new_img
 
 
-def main(k, max_iter, threshold, seed, image_path):
+def main(k, max_iter, threshold, seed, image_path, output_path):
     """Execute the full K-means image simplification pipeline."""
-    # Read and validate the image
     img = io.imread(image_path)
     validate_data(img, k, max_iter, threshold)
+
     img_f = img.astype(np.float32)
 
-    # Plot the input image
     show_image(img, title="Input")
 
-    # Initialize
     np.random.seed(seed)
     centroids = init_centroids(img_f, k)
 
-    # Run the main loop
-    for iteration in range(0, max_iter):
+    for iteration in range(max_iter):
         distances = compute_distances(img_f, centroids)
         labels = assign_labels(distances)
+
         new_centroids = recompute_centroids(img_f, labels, k)
-        converged = check_convergence(new_centroids, centroids, threshold, iteration)
+
+        converged = check_convergence(
+            new_centroids,
+            centroids,
+            threshold,
+            iteration
+        )
+
         centroids = new_centroids
 
         if converged:
             break
 
-    new_img = apply_centroids(img, labels, new_centroids, k)
+    new_img = apply_centroids(img, labels, centroids, k)
 
-    # Show the output image
+    save_image(new_img, output_path)
+
     show_image(new_img, title="Output")
 
 
 if __name__ == "__main__":
-    main(K, MAX_ITER, THRESHOLD, SEED, IMAGE_PATH)
+    main(K, MAX_ITER, THRESHOLD, SEED, IMAGE_PATH, OUTPUT_PATH)
