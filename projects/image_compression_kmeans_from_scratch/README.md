@@ -1,4 +1,4 @@
-![K-Means Image Segmentation Diagram](https://raw.githubusercontent.com/Federico-CM/ml_experiments/main/projects/kmeans_from_scratch_image_simplifier/k_means_info.png)
+![K-Means Image Segmentation Diagram](https://raw.githubusercontent.com/Federico-CM/ml_experiments/main/projects/image_compression_kmeans_from_scratch/k_means_info.png)
 
 
 ## What is this?
