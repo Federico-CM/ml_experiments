@@ -25,7 +25,7 @@ Each project has its own README with purpose, approach, and result interpretatio
 
 | Project | Area | Techniques | Stack |
 |---|---|---|---|
-| [`full_analisis_ifood`](https://github.com/Federico-CM/ml_experiments/tree/main/projects/full_analisis_ifood) | End-to-end analysis | EDA, feature engineering, logistic regression, random forest | Python |
+| [`full_analysis_ifood`](https://github.com/Federico-CM/ml_experiments/tree/main/projects/full_analysis_ifood) | End-to-end analysis | EDA, feature engineering, logistic regression, random forest | Python |
 | [`chatbot_implementation_chatGPTAPI`](https://github.com/Federico-CM/ml_experiments/tree/main/projects/chatbot_implementation_chatGPTAPI) | LLM / API integration | OpenAI API, prompt engineering, conversation state management | Python |
 | [`kmeans_from_scratch_image_simplifier`](https://github.com/Federico-CM/ml_experiments/tree/main/projects/kmeans_from_scratch_image_simplifier) | Unsupervised learning | K-means (from scratch), color quantization, pixel clustering | Python |
 | [`log_reg_cancer_detection`](https://github.com/Federico-CM/ml_experiments/tree/main/projects/log_reg_cancer_detection) | Supervised learning | Logistic regression, binary classification, medical data, model evaluation | Python |

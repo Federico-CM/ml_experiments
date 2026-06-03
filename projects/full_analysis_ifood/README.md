@@ -11,7 +11,7 @@ The project is divided into three main stages:
 2. **Data Processing and Cleaning** (`process_data.py`)
 3. **Modelling** (`logreg.py` & `r_forest.py`)
 
-The findings from each stage are documented in dedicated reports ([1](https://github.com/Federico-CM/ml_experiments/blob/main/projects/full_analisis_ifood/reports/eda_report.pdf),[2](https://github.com/Federico-CM/ml_experiments/blob/main/projects/full_analisis_ifood/reports/data_processing_report.pdf),[3](https://github.com/Federico-CM/ml_experiments/blob/main/projects/full_analisis_ifood/reports/modelling_report.pdf))
+The findings from each stage are documented in dedicated reports ([1](https://github.com/Federico-CM/ml_experiments/blob/main/projects/full_analysis_ifood/reports/eda_report.pdf),[2](https://github.com/Federico-CM/ml_experiments/blob/main/projects/full_analysis_ifood/reports/data_processing_report.pdf),[3](https://github.com/Federico-CM/ml_experiments/blob/main/projects/full_analysis_ifood/reports/modelling_report.pdf))
 
 ## Why is this interesting?
 This project uses the iFood Customer dataset, originally designed as a hiring case study for the iFood Brain Data Analytics team.
@@ -44,7 +44,7 @@ The generated visualizations help identify potential problems in the data and pr
 
 All findings are summarized in:
 
-[eda_report.pdf](https://github.com/Federico-CM/ml_experiments/blob/main/projects/full_analisis_ifood/reports/eda_report.pdf)
+[eda_report.pdf](https://github.com/Federico-CM/ml_experiments/blob/main/projects/full_analysis_ifood/reports/eda_report.pdf)
 
 ## Data Processing
 
@@ -66,7 +66,7 @@ The processed dataset is then used as input for the logistic regression analysis
 
 All changes are summarized in:
 
-[data_processing_report.pdf](https://github.com/Federico-CM/ml_experiments/blob/main/projects/full_analisis_ifood/reports/data_processing_report.pdf)
+[data_processing_report.pdf](https://github.com/Federico-CM/ml_experiments/blob/main/projects/full_analysis_ifood/reports/data_processing_report.pdf)
 
 ## Logistic Regression Analysis
 
@@ -87,7 +87,7 @@ The model analysis includes:
 
 Results and conclusions are documented in:
 
-[modelling_report.pdf](https://github.com/Federico-CM/ml_experiments/blob/main/projects/full_analisis_ifood/reports/modelling_report.pdf)
+[modelling_report.pdf](https://github.com/Federico-CM/ml_experiments/blob/main/projects/full_analysis_ifood/reports/modelling_report.pdf)
 
 # Technical Stuff
 
@@ -115,5 +115,5 @@ python3 r_forest.py
 ## How do I interpret the results?
 
 The models generate several sumary statistics.
-An interpretation is offered in the [modelling_report.pdf](https://github.com/Federico-CM/ml_experiments/blob/main/projects/full_analisis_ifood/reports/modelling_report.pdf).
+An interpretation is offered in the [modelling_report.pdf](https://github.com/Federico-CM/ml_experiments/blob/main/projects/full_analysis_ifood/reports/modelling_report.pdf).
 Accuracy measures overall correctness, ROC AUC evaluates the model’s ability to distinguish classes, and PR AUC is especially useful for imbalanced datasets. Precision indicates how reliable positive predictions are, while recall measures how many actual positives are detected. The confusion matrix shows the number of correct and incorrect predictions, and cross-validation results assess the model’s stability and generalization performance.
