@@ -9,31 +9,14 @@ The project is divided into three main stages:
 
 1. **Exploratory Data Analysis (EDA)** (`eda.py`)
 2. **Data Processing and Cleaning** (`process_data.py`)
-3. **Logistic Regression Analysis** (`logreg.py`)
+3. **Modelling** (`logreg.py` & `r_forest.py`)
 
-The findings from each stage are documented in dedicated reports.
+The findings from each stage are documented in dedicated reports ([1](https://github.com/Federico-CM/ml_experiments/blob/main/projects/full_analisis_ifood/reports/eda_report.pdf),[2](https://github.com/Federico-CM/ml_experiments/blob/main/projects/full_analisis_ifood/reports/data_processing_report.pdf),[3](https://github.com/Federico-CM/ml_experiments/blob/main/projects/full_analisis_ifood/reports/modelling_report.pdf))
 
 ## Why is this interesting?
-Real-world datasets are rarely clean and ready for machine learning.
+This project uses the iFood Customer dataset, originally designed as a hiring case study for the iFood Brain Data Analytics team.
 
-Before building predictive models, it is important to understand:
-
-- Missing values
-- Outliers
-- Inconsistent data
-- Feature distributions
-- Relationships between variables
-- Potential sources of bias
-
-This project demonstrates a realistic machine learning workflow, where data quality assessment and preprocessing are essential steps before modeling.
-
-Similar approaches are used in:
-
-- Marketing campaign optimization
-- Customer retention analysis
-- Customer behavior prediction
-- Business intelligence
-- Data-driven decision making
+The dataset contains realistic data quality issues and imperfections, making it a good example of a real-world analytics workflow: exploratory analysis, data cleaning, feature preparation, and predictive modeling.
 
 ## What does this project show?
 This project is an example of:
@@ -61,7 +44,7 @@ The generated visualizations help identify potential problems in the data and pr
 
 All findings are summarized in:
 
-`eda_report.pdf`
+[eda_report.pdf](https://github.com/Federico-CM/ml_experiments/blob/main/projects/full_analisis_ifood/reports/eda_report.pdf)
 
 ## Data Processing
 
@@ -81,13 +64,17 @@ Typical processing tasks may include:
 
 The processed dataset is then used as input for the logistic regression analysis.
 
+All changes are summarized in:
+
+[data_processing_report.pdf](https://github.com/Federico-CM/ml_experiments/blob/main/projects/full_analisis_ifood/reports/data_processing_report.pdf)
+
 ## Logistic Regression Analysis
 
-The script:
+The scripts:
 
-`logreg.py`
+`logreg.py` and `r_forest.py`
 
-trains and evaluates a logistic regression model using the processed dataset.
+trains and evaluates a logistic regression model and a random forest model using the processed dataset.
 
 The objective is to predict whether a customer is likely to respond positively to a marketing campaign.
 
@@ -100,7 +87,7 @@ The model analysis includes:
 
 Results and conclusions are documented in:
 
-`logreg_report.md`
+[modelling_report.pdf](https://github.com/Federico-CM/ml_experiments/blob/main/projects/full_analisis_ifood/reports/modelling_report.pdf)
 
 # Technical Stuff
 
@@ -112,59 +99,21 @@ Install the required libraries:
 pip3 install pandas numpy matplotlib seaborn scikit-learn
 ```
 
-Run the exploratory analysis first:
 
-```bash
-python3 eda.py
-```
-
-Review the findings in:
-
-```text
-eda_report.md
-```
-
-Process the data:
-
-```bash
-python3 process_data.py
-```
-
-Run the logistic regression analysis:
+Run the logistic regression model:
 
 ```bash
 python3 logreg.py
 ```
 
-Review the model results in:
+Run the random forest model:
 
-```text
-logreg_report.md
+```bash
+python3 r_forest.py
 ```
 
 ## How do I interpret the results?
 
-The project generates two main reports:
-
-### EDA Report
-
-The EDA report documents:
-
-- Data quality issues
-- Missing values
-- Outliers
-- Distribution characteristics
-- Relationships between variables
-
-The goal is to understand the dataset and determine what preprocessing steps are required before modeling.
-
-### Logistic Regression Report
-
-The logistic regression report documents:
-
-- Model performance metrics
-- Predictive power of the model
-- Important variables influencing predictions
-- Strengths and weaknesses of the model
-
-Together, these reports provide a complete view of the dataset, from raw data exploration to predictive modeling.
+The models generate several sumary statistics.
+An interpretation is offered in the [modelling_report.pdf](https://github.com/Federico-CM/ml_experiments/blob/main/projects/full_analisis_ifood/reports/modelling_report.pdf).
+Accuracy measures overall correctness, ROC AUC evaluates the model’s ability to distinguish classes, and PR AUC is especially useful for imbalanced datasets. Precision indicates how reliable positive predictions are, while recall measures how many actual positives are detected. The confusion matrix shows the number of correct and incorrect predictions, and cross-validation results assess the model’s stability and generalization performance.

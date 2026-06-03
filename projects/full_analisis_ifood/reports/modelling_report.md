@@ -1,73 +1,143 @@
-# Model Comparison Report
+# iFood Customer Data Analysis
 
-## Summary
+## What is this?
+This project contains a complete analysis of the iFood customer marketing dataset.
 
-Two classification models were evaluated to predict customer response to the marketing campaign using the cleaned and processed iFood dataset:
+The objective is to explore the data, identify quality issues, prepare the dataset for modeling, and build a logistic regression model capable of predicting customer responses to marketing campaigns.
 
-- Logistic Regression
-- Random Forest
+The project is divided into three main stages:
 
-Both models achieved good overall performance, with Logistic Regression slightly outperforming Random Forest across most evaluation metrics.
+1. **Exploratory Data Analysis (EDA)** ([eda.py](https://github.com/Federico-CM/ml_experiments/blob/main/projects/full_analisis_ifood/python/eda.py))
+2. **Data Processing and Cleaning** ([process_data.py](https://github.com/Federico-CM/ml_experiments/blob/main/projects/full_analisis_ifood/python/process_data.py))
+3. **Modelling** ([logreg.py](https://github.com/Federico-CM/ml_experiments/blob/main/projects/full_analisis_ifood/python/logreg.py) & [r_forest.py](https://github.com/Federico-CM/ml_experiments/blob/main/projects/full_analisis_ifood/python/r_forest.py))
 
-## Impact
-**The Logistic Regression model demonstrates meaningful targeting capability.** While responders represent approximately 15% of the customer population (66 of 447 customers), the model identifies a smaller target segment comprising approximately 9% of customers (41 of 447) in which 71% are actual responders. The overal recall of the model is 44%.
+The findings from each stage are documented in dedicated reports ([1](https://github.com/Federico-CM/ml_experiments/blob/main/projects/full_analisis_ifood/reports/eda_report.pdf),[2](https://github.com/Federico-CM/ml_experiments/blob/main/projects/full_analisis_ifood/reports/data_processing_report.pdf),[3](https://github.com/Federico-CM/ml_experiments/blob/main/projects/full_analisis_ifood/reports/modelling_report.pdf))
 
-In practical terms, **customers selected by the model are nearly five times more likely to respond than a randomly selected customer from the overall population.** This indicates that the model effectively concentrates likely responders into a much smaller group while maintaining a relatively high precision rate.
+## Why is this interesting?
+Real-world datasets are rarely clean and ready for machine learning.
 
-These results suggest that the model could improve marketing targeting efficiency by directing campaign efforts toward customers with a substantially higher probability of responding.
+Before building predictive models, it is important to understand:
 
-The recall rate of 44% indicates that the model identifies fewer than half of all actual responders, meaning that a targeted campaign based solely on model predictions would miss a considerable proportion of potential respondents. This highlights that **there is a trade-off between improved targeting efficiency and overall response volume, as gains in precision come at the cost of excluding some likely responders.**
+- Missing values
+- Outliers
+- Inconsistent data
+- Feature distributions
+- Relationships between variables
+- Potential sources of bias
 
-## Model Performance
+This project demonstrates a realistic machine learning workflow, where data quality assessment and preprocessing are essential steps before modeling.
 
-| Metric | Logistic Regression | Random Forest |
-|----------|----------:|----------:|
-| Accuracy | 89.0% | 87.9% |
-| Precision (Response = 1) | 71% | 70% |
-| Recall (Response = 1) | 44% | 32% |
-| F1-score (Response = 1) | 0.54 | 0.44 |
-| ROC AUC | 0.894 | 0.877 |
-| PR AUC | 0.616 | 0.588 |
+Similar approaches are used in:
 
-Logistic Regression achieved better recall, F1-score, ROC AUC, and PR AUC, indicating stronger overall predictive performance.
+- Marketing campaign optimization
+- Customer retention analysis
+- Customer behavior prediction
+- Business intelligence
+- Data-driven decision making
 
----
+## What does this project show?
+This project is an example of:
 
-## Confusion Matrices
+- How to perform exploratory data analysis on a real-world dataset
+- How to identify and document data quality issues
+- How to create visualizations that reveal patterns and anomalies
+- How to preprocess data for machine learning
+- How logistic regression can be used for binary classification
+- How model results can be interpreted and evaluated
 
-### Logistic Regression
+## Exploratory Data Analysis
 
-| | Predicted 0 | Predicted 1 |
-|---|---:|---:|
-| Actual 0 | 369 | 12 |
-| Actual 1 | 37 | 29 |
+The script [eda.py](https://github.com/Federico-CM/ml_experiments/blob/main/projects/full_analisis_ifood/python/eda.py) performs a series of analyses and validation checks on the dataset.
 
-### Random Forest
+These include:
 
-| | Predicted 0 | Predicted 1 |
-|---|---:|---:|
-| Actual 0 | 372 | 9 |
-| Actual 1 | 45 | 21 |
+- Missing value detection
+- Distribution analysis
+- Outlier identification
+- Feature visualization
+- Consistency checks
 
-Both models correctly classified most non-responders, but Logistic Regression identified more actual responders.
+The generated visualizations help identify potential problems in the data and provide insight into customer behavior.
 
----
+All findings are summarized in:
 
-## Important Predictors
+[eda_report.pdf](https://github.com/Federico-CM/ml_experiments/blob/main/projects/full_analisis_ifood/reports/eda_report.pdf)
 
-Both models identified similar factors as important for campaign response:
+## Data Processing
 
-- Customer tenure
-- Previous campaign acceptance
-- Customer spending patterns
-- Income
-- Purchase behavior
-- Recency
+After the exploratory analysis, the dataset can be cleaned and transformed using:
 
-Customer tenure and recency were consistently among the strongest predictors.
+[process_data.py](https://github.com/Federico-CM/ml_experiments/blob/main/projects/full_analisis_ifood/python/process_data.py)
 
----
+This script prepares the data for machine learning by applying the necessary preprocessing steps identified during the EDA phase.
 
-## Conclusion
+Typical processing tasks may include:
 
-Both models demonstrated strong performance in predicting campaign response, with Logistic Regression outperforming Random Forest across key evaluation metrics. The Logistic Regression model effectively identified likely responders, increasing response concentration from 15% in the overall customer base to 71% within the targeted segment. Customer tenure, recency, prior campaign acceptance, and spending behavior were the most influential predictors. Overall, the results indicate that Logistic Regression is a suitable model for improving marketing campaign targeting and efficiency. If the objective is maximizing response rate while limiting campaign volume, Logistic Regression should be used to prioritize customers.
+- Handling missing values
+- Removing invalid records
+- Feature engineering
+- Encoding categorical variables
+- Scaling or transforming features
+
+The processed dataset is then used as input for the logistic regression analysis.
+
+All changes are summarized in:
+
+[data_processing_report.pdf](https://github.com/Federico-CM/ml_experiments/blob/main/projects/full_analisis_ifood/reports/data_processing_report.pdf)
+
+## Logistic Regression Analysis
+
+The scripts:
+
+[logreg.py](https://github.com/Federico-CM/ml_experiments/blob/main/projects/full_analisis_ifood/python/logreg.py) and [r_forest.py](https://github.com/Federico-CM/ml_experiments/blob/main/projects/full_analisis_ifood/python/r_forest.py)
+
+train and evaluate a logistic regression model and a random forest model using the processed dataset.
+
+The objective is to predict whether a customer is likely to respond positively to a marketing campaign.
+
+The model analysis includes:
+
+- Feature importance interpretation
+- Model performance evaluation
+- Classification metrics
+- Discussion of results and limitations
+
+Results and conclusions are documented in:
+
+[modelling_report.pdf](https://github.com/Federico-CM/ml_experiments/blob/main/projects/full_analisis_ifood/reports/modelling_report.pdf)
+
+# Technical Stuff
+
+## How do I execute the code?
+
+Install the required libraries:
+
+```bash
+pip3 install pandas numpy matplotlib seaborn scikit-learn
+```
+
+Run the logistic regression model:
+
+```bash
+python3 logreg.py
+```
+
+Source:
+[logreg.py](https://github.com/Federico-CM/ml_experiments/blob/main/projects/full_analisis_ifood/python/logreg.py)
+
+Run the random forest model:
+
+```bash
+python3 r_forest.py
+```
+
+Source:
+[r_forest.py](https://github.com/Federico-CM/ml_experiments/blob/main/projects/full_analisis_ifood/python/r_forest.py)
+
+## How do I interpret the results?
+
+The models generate several summary statistics.
+
+An interpretation is offered in the [modelling_report.pdf](https://github.com/Federico-CM/ml_experiments/blob/main/projects/full_analisis_ifood/reports/modelling_report.pdf).
+
+Accuracy measures overall correctness, ROC AUC evaluates the model’s ability to distinguish classes, and PR AUC is especially useful for imbalanced datasets. Precision indicates how reliable positive predictions are, while recall measures how many actual positives are detected. The confusion matrix shows the number of correct and incorrect predictions, and cross-validation results assess the model’s stability and generalization performance.
