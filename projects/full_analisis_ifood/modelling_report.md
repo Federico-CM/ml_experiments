@@ -1,68 +1,73 @@
-# Logistic Regression Report
+# Model Comparison Report
 
 ## Summary
 
-A logistic regression model was fitted to predict customer response to the marketing campaign using the cleaned and processed iFood dataset.
+Two classification models were evaluated to predict customer response to the marketing campaign using the cleaned and processed iFood dataset:
 
-**The model achieved good overall performance and provides an interpretable baseline model.**
+- Logistic Regression
+- Random Forest
 
-Accuracy on the test set was **89.0%**.
+Both models achieved good overall performance, with Logistic Regression slightly outperforming Random Forest across most evaluation metrics.
 
-## Important Findings
+## Impact
+**The Logistic Regression model demonstrates meaningful targeting capability.** While responders represent approximately 15% of the customer population (66 of 447 customers), the model identifies a smaller target segment comprising approximately 9% of customers (41 of 447) in which 71% are actual responders. The overal recall of the model is 44%.
 
-### 1. Overall Model Performance
+In practical terms, **customers selected by the model are nearly five times more likely to respond than a randomly selected customer from the overall population.** This indicates that the model effectively concentrates likely responders into a much smaller group while maintaining a relatively high precision rate.
 
-The model achieved:
+These results suggest that the model could improve marketing targeting efficiency by directing campaign efforts toward customers with a substantially higher probability of responding.
 
-- Accuracy: **89.0%**
-- Precision (Response = 1): **71%**
-- Recall (Response = 1): **44%**
-- F1-score (Response = 1): **0.54**
+The recall rate of 44% indicates that the model identifies fewer than half of all actual responders, meaning that a targeted campaign based solely on model predictions would miss a considerable proportion of potential respondents. This highlights that **there is a trade-off between improved targeting efficiency and overall response volume, as gains in precision come at the cost of excluding some likely responders.**
 
-The model performs well at identifying non-responders but misses a substantial proportion of actual responders.
+## Model Performance
+
+| Metric | Logistic Regression | Random Forest |
+|----------|----------:|----------:|
+| Accuracy | 89.0% | 87.9% |
+| Precision (Response = 1) | 71% | 70% |
+| Recall (Response = 1) | 44% | 32% |
+| F1-score (Response = 1) | 0.54 | 0.44 |
+| ROC AUC | 0.894 | 0.877 |
+| PR AUC | 0.616 | 0.588 |
+
+Logistic Regression achieved better recall, F1-score, ROC AUC, and PR AUC, indicating stronger overall predictive performance.
 
 ---
 
-### 2. Confusion Matrix
+## Confusion Matrices
+
+### Logistic Regression
 
 | | Predicted 0 | Predicted 1 |
 |---|---:|---:|
 | Actual 0 | 369 | 12 |
 | Actual 1 | 37 | 29 |
 
-Most classification errors are false negatives, indicating that many responding customers are not identified by the model.
+### Random Forest
+
+| | Predicted 0 | Predicted 1 |
+|---|---:|---:|
+| Actual 0 | 372 | 9 |
+| Actual 1 | 45 | 21 |
+
+Both models correctly classified most non-responders, but Logistic Regression identified more actual responders.
 
 ---
 
-### 3. Important Positive Predictors
+## Important Predictors
 
-Variables associated with a higher probability of campaign response include:
+Both models identified similar factors as important for campaign response:
 
 - Customer tenure
-- Previous campaign acceptance (`AcceptedCmp1`, `AcceptedCmp3`, `AcceptedCmp4`, `AcceptedCmp5`)
-- Higher spending on meat products
-- More web visits
-- More deal purchases
-- Higher education levels
+- Previous campaign acceptance
+- Customer spending patterns
+- Income
+- Purchase behavior
+- Recency
 
-Customer tenure was the strongest positive predictor.
+Customer tenure and recency were consistently among the strongest predictors.
 
 ---
-
-### 4. Important Negative Predictors
-
-Variables associated with a lower probability of campaign response include:
-
-- Higher recency
-- More store purchases
-- Presence of teenagers in the household
-- Married or together marital status
-- Lower education levels
-
-Recency was the strongest negative predictor.
 
 ## Conclusion
 
-The logistic regression model provides a useful and interpretable baseline. Results suggest that customer engagement, loyalty, and previous campaign participation are important drivers of response.
-
-Although overall accuracy is high, recall for responders remains modest. More flexible models may improve predictive performance, particularly for identifying customers likely to respond. 
+Both models demonstrated strong performance in predicting campaign response, with Logistic Regression outperforming Random Forest across key evaluation metrics. The Logistic Regression model effectively identified likely responders, increasing response concentration from 15% in the overall customer base to 71% within the targeted segment. Customer tenure, recency, prior campaign acceptance, and spending behavior were the most influential predictors. Overall, the results indicate that Logistic Regression is a suitable model for improving marketing campaign targeting and efficiency. If the objective is maximizing response rate while limiting campaign volume, Logistic Regression should be used to prioritize customers.
